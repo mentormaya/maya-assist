@@ -34,11 +34,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mentormaya/mayaassist.git"
+    "url": "git+https://github.com/mentormaya/maya-assist.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mentormaya/mayaassist/issues"
+    "url": "https://github.com/mentormaya/maya-assist/issues"
   },
-  "homepage": "https://github.com/mentormaya/mayaassist#readme"
+  "homepage": "https://github.com/mentormaya/maya-assist#readme"
 }
