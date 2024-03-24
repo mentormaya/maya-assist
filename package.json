@@ -1,27 +1,44 @@
 {
   "name": "maya-assist",
+  "productName": "MaYa Assist",
   "version": "0.1.0",
+  "description": "A Personal Assistant Utility App to help speed up the daily tasks with additional note taking and personal time managment features.",
   "private": true,
+  "main": "main/main.js",
+  "author": "Ajay Singh",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "concurrently -n \"NEXT,ELECTRON\" -c \"yellow,blue\" --kill-others \"next dev\" \"electron .\"",
+    "build": "next build && electron-builder",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "electron-serve": "^1.3.0",
+    "next": "14.1.4",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.4"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "concurrently": "^8.2.2",
+    "electron": "^29.1.5",
+    "electron-builder": "^24.13.3",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.4"
-  }
+    "typescript": "^5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mentormaya/mayaassist.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mentormaya/mayaassist/issues"
+  },
+  "homepage": "https://github.com/mentormaya/mayaassist#readme"
 }
