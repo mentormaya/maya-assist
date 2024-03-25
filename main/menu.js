@@ -1,5 +1,8 @@
 const { app } = require("electron");
 
+const about_app = require("./about_app")
+const about_author = require("./about_author")
+
 const APP_NAME = process.env.npm_package_productName || "MaYa Assist";
 const APP_VERSION = process.env.npm_package_version;
 
@@ -90,9 +93,11 @@ const template = [
     submenu: [
       {
         label: `About ${APP_NAME} v${APP_VERSION}`,
+        click: about_app,
       },
       {
         label: `About Author`,
+        click: about_author,
       },
       { type: "separator" },
       {
