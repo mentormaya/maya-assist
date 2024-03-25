@@ -1,6 +1,12 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, session, Menu } = require("electron");
 const serve = require("electron-serve");
 const path = require("path");
+
+const app_config = require("../constants/app.json")
+
+const menu_template = require('./menu')
+
+const isMac = process.platform === "darwin"
 
 const appServe = app.isPackaged ? serve({
   directory: path.join(__dirname, "../out")
@@ -8,12 +14,18 @@ const appServe = app.isPackaged ? serve({
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: app.isPackaged ? 2000 : 1600,
-    height: 1000,
+    width: app.isPackaged ? app_config.DEV_WIDTH : app_config.PROD_WIDTH,
+    height: app_config.HEIGHT,
     webPreferences: {
       preload: path.join(__dirname, "preload.js")
     }
   });
+
+  if(menu_template){
+    const menu = Menu.buildFromTemplate(menu_template)
+
+    Menu.setApplicationMenu(menu)
+  }
 
   if (app.isPackaged) {
     appServe(win).then(() => {
@@ -29,7 +41,25 @@ const createWindow = () => {
 }
 
 app.on("ready", () => {
-    createWindow();
+  createWindow();
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
+
+  session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+    const csp = `default-src 'self'; 
+    script-src 'self' localhost:3000 'unsafe-inline' 'unsafe-eval';
+    object-src 'none';
+    base-uri 'none';
+    require-trusted-types-for 'script';`
+    callback({
+      responseHeaders: {
+        ...details.responseHeaders,
+        'Content-Security-Policy': [csp]
+      }
+    })
+  })
 });
 
 app.on("window-all-closed", () => {

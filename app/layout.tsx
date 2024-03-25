@@ -4,8 +4,11 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const APP_NAME = process.env.npm_package_productName || "MaYa Assist";
+const APP_VERSION = process.env.npm_package_version;
+
 export const metadata: Metadata = {
-  title: "MaYa Assist",
+  title: { template: `%s | ${APP_NAME} v${APP_VERSION}`, default: `${APP_NAME} v${APP_VERSION}` },
   description: "A Personal Assistant Utility App to help speed up the daily tasks with additional note taking and personal time managment features.",
 };
 
