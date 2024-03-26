@@ -1,10 +1,10 @@
-const APP_NAME = process.env.npm_package_productName || "MaYa Assist";
-const APP_VERSION = process.env.npm_package_version;
+import { packageJson } from "@/lib/package";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-2">
-      <h1>About Author of {APP_NAME} <span>v{APP_VERSION}</span></h1>
+    <main className="min-h-screen text-center items-center justify-between p-2">
+      <h1>Author {packageJson.author}</h1>
+      <h1>({packageJson.productName}<span>v{packageJson.version}</span>)</h1>
     </main>
   );
 }

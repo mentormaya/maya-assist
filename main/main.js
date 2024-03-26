@@ -48,11 +48,12 @@ app.on("ready", () => {
   })
 
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
-    const csp = `default-src 'self'; 
+    const csp = `
+    default-src 'self' localhost:3000 'unsafe-inline' 'unsafe-eval'; 
     script-src 'self' localhost:3000 'unsafe-inline' 'unsafe-eval';
     object-src 'none';
-    base-uri 'none';
-    require-trusted-types-for 'script';`
+    base-uri 'none'`;
+    // require-trusted-types-for 'script';`
     callback({
       responseHeaders: {
         ...details.responseHeaders,

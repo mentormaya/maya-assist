@@ -4,7 +4,8 @@ export default function AboutLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="bg-slate-300">
+    <main className="">
+      <h1 className="text-center">About</h1>
       <div>{children}</div>
     </main>
   );
