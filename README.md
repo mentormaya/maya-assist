@@ -16,6 +16,7 @@ git clone git@github.com:mentormaya/maya-assist.git
 `cd` in to the directory or project just downloaded and open in code editor of your choice:
 
 ```bash
+# Dive in to the project Folder
 cd maya-assist
 code .
 ```
