@@ -5,10 +5,9 @@ function AboutFooter() {
   return (
     <footer className='w-full fixed bottom-0'>
       <div className="bg-gray-600">
-        <div className="flex px-3 m-auto border-t text-gray-800 text-sm flex-col
-      md:flex-row max-w-6xl">
+        <div className="flex justify-between flex-wrap px-3 m-auto border-t text-sm">
           <div className="text-white py-1">© Copyright {year}. All Rights Reserved.</div>
-          <div className="md:flex-auto md:flex-row-reverse flex-row flex h-6 py-1">
+          <div className="md:flex-auto md:flex-row-reverse flex-row flex h-7 py-1">
             <a href="/#" className="w-6 mx-1">
               <svg className="fill-current cursor-pointer text-gray-100 hover:text-gray-400" width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" style={{ fillRule: 'evenodd', clipRule: 'evenodd', strokeLinejoin: 'round', strokeMiterlimit: '2' }}>
                 <path id="Twitter" d="M24,12c0,6.627 -5.373,12 -12,12c-6.627,0 -12,-5.373 -12,-12c0,-6.627
