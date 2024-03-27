@@ -28,6 +28,10 @@ export default function Home() {
         <p>5. Various APIs to show or process the data.</p>
       </div>
 
+      <div>
+        from markdown file
+      </div>
+
       <div className="flex justify-end mt-4">
         <Link href={packageJson.homepage} className="text-xl hover:underline decoration-wavy  font-medium text-blue-500 dark:text-blue-300 hover:cursor-pointer" target="_blank">Learn More...</Link>
       </div>
