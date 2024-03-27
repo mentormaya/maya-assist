@@ -73,6 +73,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  hr {
+    @apply border-slate-800 dark:border-slate-300;
+  }
 }
 
 @layer utilities {

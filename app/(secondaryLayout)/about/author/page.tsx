@@ -18,7 +18,7 @@ export default function Home() {
           src="/images/author.jpg" />
       </div>
       <h1 className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl">{packageJson.author.name}</h1>
-      <h2 className="text-slate-400">(Author of {packageJson.productName}<span>v{packageJson.version}</span>)</h2>
+      <h2 className="text-slate-400">(Author of {packageJson.productName}<span>&nbsp;v{packageJson.version}</span>)</h2>
 
       {packageJson.author.description && (
         <p className="mt-2 dark:text-gray-200">
