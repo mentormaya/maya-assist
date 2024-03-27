@@ -16,12 +16,13 @@ const createWindow = () => {
   const win = new BrowserWindow({
     width: app.isPackaged ? app_config.DEV_WIDTH : app_config.PROD_WIDTH,
     height: app_config.HEIGHT,
+    icon: path.join(__dirname, app_config.ICON),
     webPreferences: {
       preload: path.join(__dirname, "preload.js")
     }
   });
 
-  if(menu_template){
+  if (menu_template) {
     const menu = Menu.buildFromTemplate(menu_template)
 
     Menu.setApplicationMenu(menu)
@@ -49,7 +50,7 @@ app.on("ready", () => {
 
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     const csp = `
-    default-src 'self' localhost:3000 'unsafe-inline' 'unsafe-eval'; 
+    default-src 'self' localhost:3000 'unsafe-inline'; 
     script-src 'self' localhost:3000 'unsafe-inline' 'unsafe-eval';
     object-src 'none';
     base-uri 'none'`;
@@ -64,7 +65,7 @@ app.on("ready", () => {
 });
 
 app.on("window-all-closed", () => {
-    if(process.platform !== "darwin"){
-        app.quit();
-    }
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
 });

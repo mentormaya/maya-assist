@@ -1,12 +1,16 @@
+import AboutFooter from "@/components/footer/about";
+
 export default function AboutLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <main className="">
-      <h1 className="text-center">About</h1>
-      <div>{children}</div>
-    </main>
+    <div className="h-full flex flex-col">
+      <main className="text-center items-center justify-between p-2 mb-6">
+        {children}
+      </main>
+      <AboutFooter />
+    </div>
   );
 }

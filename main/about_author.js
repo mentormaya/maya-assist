@@ -1,10 +1,14 @@
 const { app, BrowserWindow } = require("electron");
+const path = require("path");
+
+const app_config = require("../constants/app.json")
 
 const about_author = async () => {
   console.log("About Author");
   const win = new BrowserWindow({
     width: 800,
-    height: 600
+    height: 600,
+    icon: path.join(__dirname, app_config.ICON),
   })
 
   win.removeMenu()
