@@ -50,8 +50,8 @@ app.on("ready", () => {
 
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     const csp = `
-    default-src 'self' localhost:3000 'unsafe-inline'; 
-    script-src 'self' localhost:3000 'unsafe-inline' 'unsafe-eval';
+    default-src 'self' localhost:3000 'unsafe-inline' github.githubassets.com; 
+    script-src 'self' localhost:3000 'unsafe-inline' 'unsafe-eval' github.githubassets.com;
     object-src 'none';
     base-uri 'none'`;
     // require-trusted-types-for 'script';`
