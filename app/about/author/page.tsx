@@ -21,7 +21,7 @@ export default function Home() {
       <h2 className="text-slate-400">(Author of {packageJson.productName}<span>v{packageJson.version}</span>)</h2>
 
       {packageJson.author.description && (
-        <p className="mt-2 text-gray-600 dark:text-gray-200">
+        <p className="mt-2 dark:text-gray-200">
           {packageJson.author.description}
         </p>
       )}
@@ -31,8 +31,9 @@ export default function Home() {
       </div>
 
       <div className="flex justify-end mt-4">
-        <Link href={packageJson.author.url} className="text-xl hover:underline decoration-wavy  font-medium text-blue-500 dark:text-blue-300 hover:cursor-pointer" target="_blank">Follow me...</Link>
+        <Link href={`mailto:${packageJson.author.url}`} className="text-xl hover:underline decoration-wavy  font-medium text-blue-500 dark:text-blue-300 hover:cursor-pointer">📧</Link>
+        <Link href={packageJson.author.url} className="text-xl hover:underline decoration-wavy  font-medium text-blue-500 dark:text-blue-300 hover:cursor-pointer" target="_blank">🌐</Link>
       </div>
-    </div>
+    </div >
   );
 }

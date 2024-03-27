@@ -24,7 +24,7 @@ export default function Home() {
       <h2 className="text-slate-400">v{packageJson.version}</h2>
 
       {packageJson.description && (
-        <p className="mt-2 text-slate-300 dark:text-gray-200">
+        <p className="mt-2 dark:text-gray-200">
           {packageJson.description}
         </p>
       )}
