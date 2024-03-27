@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/providers/Theme";
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: `%s | ${packageJson.productName} v${packageJson.version}`,
     default: `${packageJson.productName} v${packageJson.version}`
   },
-  description: "A Personal Assistant Utility App to help speed up the daily tasks with additional note taking and personal time managment features.",
+  description: `${packageJson.description}`,
 };
 
 export default function RootLayout({
