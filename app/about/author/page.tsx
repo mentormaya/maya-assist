@@ -1,5 +1,6 @@
 import { packageJson } from "@/lib/package";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -11,15 +12,15 @@ export default function Home() {
           height={600}
           src="/images/author.jpg" />
       </div>
-      <h1 className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl">{packageJson.author}</h1>
+      <h1 className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl">{packageJson.author.name}</h1>
       <h2 className="text-slate-400">(Author of {packageJson.productName}<span>v{packageJson.version}</span>)</h2>
 
       <p className="mt-2 text-gray-600 dark:text-gray-200">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur est, molestiae repellat quibusdam quidem rem voluptatibus natus perferendis? Quia reprehenderit ipsum explicabo debitis assumenda? Animi veniam eum esse praesentium dolorum. Lorem ipsum dolor sit amet consectetur adipisicing
+        {packageJson.author.description}
       </p>
 
       <div className="flex justify-end mt-4">
-        <a href="#" className="text-xl hover:underline decoration-wavy  font-medium text-blue-500 dark:text-blue-300">Follow me</a>
+        <Link href={packageJson.author.url} className="text-xl hover:underline decoration-wavy  font-medium text-blue-500 dark:text-blue-300 hover:cursor-pointer" target="_blank">Follow me...</Link>
       </div>
     </div>
   );

@@ -5,7 +5,12 @@
   "description": "A Personal Assistant Utility App to help speed up the daily tasks with additional note taking and personal time managment features.",
   "private": true,
   "main": "main/main.js",
-  "author": "Ajay Singh",
+  "author": {
+    "name": "Ajay Singh",
+    "url": "https://ajaysingh.com.np",
+    "email": "admin@ajaysingh.com.np",
+    "description": "This is the sample description about author."
+  },
   "scripts": {
     "dev": "concurrently -n \"NEXT,ELECTRON\" -c \"yellow,blue\" --kill-others \"next dev\" \"electron .\"",
     "build": "next build && electron-builder",
