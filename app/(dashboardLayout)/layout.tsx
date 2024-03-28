@@ -11,12 +11,14 @@ export default function MainLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col justify-between min-h-screen">
-      <div className="flex items-start justify-between divide-x">
+    <div className="flex flex-col justify-between h-screen overflow-hidden">
+      <div className="flex-grow flex items-stretch justify-between divide-x h-full">
         <Sidebar />
-        <div className="w-full divide-y">
+        <div className="w-full divide-y flex flex-col mb-4">
           <Heading />
-          {children}
+          <div className="container flex flex-col items-center justify-between p-6 overflow-y-auto">
+            {children}
+          </div>
         </div>
       </div>
       <MainFooter />
