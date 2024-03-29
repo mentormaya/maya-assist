@@ -6,8 +6,6 @@ const app_config = require("../constants/app.json")
 
 const menu_template = require('./menu')
 
-const isMac = process.platform === "darwin"
-
 const appServe = app.isPackaged ? serve({
   directory: path.join(__dirname, "../out")
 }) : null;
