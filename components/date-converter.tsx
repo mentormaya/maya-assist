@@ -1,6 +1,7 @@
 "use client"
 
-import { convertEnglishDate, convertNepaliDate } from "@/actions/sapi"
+import useSAPI from 'swr'
+import { convertEnglishDate, convertNepaliDate, getDate } from "@/fetchers/sapi"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -10,20 +11,28 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { ConvertedDate, Date } from "@/props/sapi/dates"
-import { useState } from "react"
-
-interface Props {
-  today: Date
-}
+import { useEffect, useState } from "react"
 
 const nepaliMonths = ["", "Baishakh", "Jestha", "Asar", "Shrawan", "Bhadra", "Ashoj", "Kartik", "Mangsir", "Poush", "Magh", "Falgun", "Chaitra"]
 const englishMonths = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 
-export function DateConverter({ today }: Props) {
-  const [nepaliDate, setNepaliDate] = useState(`${today.nep_year_eng}-${nepaliMonths.indexOf(today.nep_month_eng).toString().padStart(2, '0')}-${today.nep_date_eng.padStart(2, '0')}`)
-  const [englishDate, setenglishDate] = useState(`${today.int_year_eng}-${englishMonths.indexOf(today.int_month_eng).toString().padStart(2, '0')}-${today.int_date_eng.padStart(2, '0')}`)
+export function DateConverter() {
+  const { data: date, isLoading: loadingDate } = useSAPI("/date/today", getDate)
+
+  const [nepaliDate, setNepaliDate] = useState("")
+  const [englishDate, setenglishDate] = useState("")
   const [message, setMessage] = useState("Select the date to change.")
+
+  useEffect(() => {
+    if (!loadingDate) {
+      const defaultInt = `${date.int_year_eng}-${englishMonths.indexOf(date.int_month_eng).toString().padStart(2, '0')}-${date.int_date_eng.padStart(2, '0')}`
+      const defaultNep = `${date.nep_year_eng}-${nepaliMonths.indexOf(date.nep_month_eng).toString().padStart(2, '0')}-${date.nep_date_eng.padStart(2, '0')}`
+
+      setNepaliDate(defaultNep)
+      setenglishDate(defaultInt)
+    }
+  }, [loadingDate])
 
   const showDate = (_convertedDate: ConvertedDate) => {
     const int_date_parts = _convertedDate.int_date.split(" ")

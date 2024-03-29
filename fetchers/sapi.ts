@@ -1,9 +1,10 @@
-"use server"
-
 const sapi = "https://sapi.deta.dev"
 
-export const getDate = async () => {
-  return (await fetch(`${sapi}/date/today`)).json()
+export const getDate = (url: string) => {
+  // return (await ).json()
+  const date = fetch(`${sapi}${url}`)
+  .then(res => res.json())
+  return date
 }
 
 export const convertNepaliDate = async (date: string) => {
