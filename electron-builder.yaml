@@ -3,10 +3,10 @@ productName: "MaYa Assist"
 copyright: "Copyright (c) 2024 Ajay Singh"
 win:
   target: ["dir", "portable", "zip"]
-  icon: "resources/icon.ico"
+  icon: "public/icons/icon.ico"
 linux:
   target: ["dir", "appimage", "zip"]
-  icon: "resources/icon-256.png"
+  icon: "public/icons/icon-256.png"
 mac:
   target: ["dir", "dmg", "zip"]
-  icon: "resources/icon.icns"
+  icon: "public/icons/icon.icns"
