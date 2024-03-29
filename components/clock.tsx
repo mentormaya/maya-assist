@@ -19,7 +19,7 @@ const DigitalClock = ({ lang, title = "", ticker = true, update = 1000 }: Props)
         setTime(new Date());
       }, update); // by default every 1 seconds
     }
-  }, []);
+  }, [ticker, update]);
 
   return (
     <div>
