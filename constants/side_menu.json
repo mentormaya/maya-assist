@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Home",
+    "link": "/",
+    "icon": "home"
+  },
+  {
+    "label": "SAPI",
+    "link": "/sapi",
+    "icon": "gears"
+  }
+]
