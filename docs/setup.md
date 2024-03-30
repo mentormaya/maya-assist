@@ -4,7 +4,7 @@ To setup the project mannually from the scratch, we can follow these steps as be
 
 ## Create a NextJs App
 
-First, initate the nextjs app by bootstraping with `create-next-app@latest`.  Set the preferences you want durint setup. _The only setting you need to take care is about using App Router. Currently, I personally choose "No" to keep using the old-but-gold Pages Router, and it's the way I've used_. Enter this command in to the terminal and hit `Enter`.
+First, initate the nextjs app by bootstraping with `create-next-app@latest`. Set the preferences you want durint setup. _The only setting you need to take care is about using App Router. Currently, I personally choose "No" to keep using the old-but-gold Pages Router, and it's the way I've used_. Enter this command in to the terminal and hit `Enter`.
 
 ```node
 npx create-next-app@latest maya-assist
@@ -77,17 +77,19 @@ const { app, BrowserWindow } = require("electron");
 const serve = require("electron-serve");
 const path = require("path");
 
-const appServe = app.isPackaged ? serve({
-  directory: path.join(__dirname, "../out")
-}) : null;
+const appServe = app.isPackaged
+  ? serve({
+      directory: path.join(__dirname, "../out"),
+    })
+  : null;
 
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js")
-    }
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
   if (app.isPackaged) {
@@ -101,16 +103,16 @@ const createWindow = () => {
       win.webContents.reloadIgnoringCache();
     });
   }
-}
+};
 
 app.on("ready", () => {
-    createWindow();
+  createWindow();
 });
 
 app.on("window-all-closed", () => {
-    if(process.platform !== "darwin"){
-        app.quit();
-    }
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
 });
 ```
 
@@ -126,12 +128,12 @@ Inside the `main/preload.js` file we created before, insert the following conten
 const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI", {
-    on: (channel, callback) => {
-        ipcRenderer.on(channel, callback);
-    },
-    send: (channel, args) => {
-        ipcRenderer.send(channel, args);
-    }
+  on: (channel, callback) => {
+    ipcRenderer.on(channel, callback);
+  },
+  send: (channel, args) => {
+    ipcRenderer.send(channel, args);
+  },
 });
 ```
 

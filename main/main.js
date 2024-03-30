@@ -2,13 +2,15 @@ const { app, BrowserWindow, session, Menu } = require("electron");
 const serve = require("electron-serve");
 const path = require("path");
 
-const app_config = require("../constants/app.json")
+const app_config = require("../constants/app.json");
 
-const menu_template = require('./menu')
+const menu = require("./menu");
 
-const appServe = app.isPackaged ? serve({
-  directory: path.join(__dirname, "../out")
-}) : null;
+const appServe = app.isPackaged
+  ? serve({
+    directory: path.join(__dirname, "../out"),
+  })
+  : null;
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -16,14 +18,12 @@ const createWindow = () => {
     height: app_config.HEIGHT,
     icon: path.join(__dirname, app_config.ICON),
     webPreferences: {
-      preload: path.join(__dirname, "preload.js")
-    }
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
-  if (menu_template) {
-    const menu = Menu.buildFromTemplate(menu_template)
-
-    Menu.setApplicationMenu(menu)
+  if (menu) {
+    Menu.setApplicationMenu(menu);
   }
 
   if (app.isPackaged) {
@@ -37,14 +37,14 @@ const createWindow = () => {
       win.webContents.reloadIgnoringCache();
     });
   }
-}
+};
 
 app.on("ready", () => {
   createWindow();
 
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
 
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     const csp = `
@@ -56,10 +56,10 @@ app.on("ready", () => {
     callback({
       responseHeaders: {
         ...details.responseHeaders,
-        'Content-Security-Policy': [csp]
-      }
-    })
-  })
+        "Content-Security-Policy": [csp],
+      },
+    });
+  });
 });
 
 app.on("window-all-closed", () => {

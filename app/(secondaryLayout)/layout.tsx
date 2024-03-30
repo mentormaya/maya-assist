@@ -1,4 +1,4 @@
-import AboutFooter from "@/components/footer/about";
+import AboutFooter from "@/app/(secondaryLayout)/_components/_sections/footer";
 
 export default function SecondaryLayout({
   children,
@@ -7,7 +7,7 @@ export default function SecondaryLayout({
 }>) {
   return (
     <div className="flex flex-col">
-      <div className="container flex items-center justify-between p-2 mb-6">
+      <div className="container mb-6 flex items-center justify-between p-2">
         {children}
       </div>
       <AboutFooter />

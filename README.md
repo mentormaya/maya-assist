@@ -51,7 +51,6 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-
 ### Building the executables
 
 Now it's time to build our application executables. We're using `electron-builder` to handle that for us. Start creating a file called `electron-builder.yaml` on the root of our project. Then, inside this file, put the configuration for building the application, according to the [official electron-builder](https://www.electron.build/) documentation. You can find an example below:

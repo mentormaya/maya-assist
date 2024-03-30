@@ -15,10 +15,9 @@ export interface Date {
   day_nep: string;
 }
 
-
 export interface ConvertedDate {
-  message: string
-  int_date: string
-  nep_date: string
-  miti: string
+  message: string;
+  int_date: string;
+  nep_date: string;
+  miti: string;
 }

@@ -2,12 +2,13 @@ const { app, BrowserWindow } = require("electron");
 const serve = require("electron-serve");
 const path = require("path");
 
-const app_config = require("../constants/app.json")
+const app_config = require("../constants/app.json");
 
-
-const server = app.isPackaged ? serve({
-  directory: path.join(__dirname, "../out")
-}) : null;
+const server = app.isPackaged
+  ? serve({
+      directory: path.join(__dirname, "../out"),
+    })
+  : null;
 
 const about_author = async () => {
   console.log("About Author");
@@ -15,9 +16,9 @@ const about_author = async () => {
     width: 800,
     height: 600,
     icon: path.join(__dirname, app_config.ICON),
-  })
+  });
 
-  win.removeMenu()
+  win.removeMenu();
 
   if (app.isPackaged) {
     server(win).then(() => {
@@ -26,10 +27,10 @@ const about_author = async () => {
   } else {
     win.loadURL("http://localhost:3000/about/author");
     win.webContents.on("did-fail-load", (e, code, desc) => {
-      win.setTitle(`${win.getTitle}: Reloading...`)
+      win.setTitle(`${win.getTitle}: Reloading...`);
       win.webContents.reloadIgnoringCache();
     });
   }
-}
+};
 
-module.exports = about_author
+module.exports = about_author;

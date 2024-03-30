@@ -1,8 +1,8 @@
-import { devnagari } from "@/lib/numbers"
+import { devnagariPaded } from "@/lib/numbers";
 
 export const formatClock = (time: string, lang: string) => {
   if (lang === "np") {
-    return `${devnagari(time.split(" ")[0])} ${time.split(" ")[1] == "AM" ? "पुर्वान्ह" : "अपरान्ह"}`
+    return `${devnagariPaded(time.split(" ")[0], 8)} ${time.split(" ")[1] == "AM" ? "पुर्वान्ह" : "अपरान्ह"}`;
   }
-  return time
-}
+  return time;
+};

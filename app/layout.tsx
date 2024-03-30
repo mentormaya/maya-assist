@@ -5,6 +5,7 @@ import "@/app/globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/providers/Theme";
 import { packageJson } from "@/lib/package";
+import { Toaster } from "@/components/ui/toaster";
 
 const font = Nunito({
   subsets: ["latin"],
@@ -33,7 +34,7 @@ export default function RootLayout({
           // "bg-gradient-to-r from-violet-200 to-pink-200",
           // "bg-gradient-to-r from-neutral-300 to-stone-400",
           // "dark:bg-gradient-to-r from-stone-500 to-stone-700",
-          font.className
+          font.className,
         )}
       >
         <ThemeProvider
@@ -42,7 +43,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen min-w-screen">{children}</div>
+          <div className="min-w-screen min-h-screen">{children}</div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

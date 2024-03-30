@@ -1,9 +1,7 @@
-import MainFooter from "@/components/footer/main";
-import Image from "next/image";
+import MainFooter from "@/app/(dashboardLayout)/_components/_sections/footer";
 
-import { packageJson } from "@/lib/package";
-import Sidebar from "@/components/sections/sidebar";
-import Heading from "@/components/sections/heading";
+import Sidebar from "@/app/(dashboardLayout)/_components/_sections/sidebar";
+import Heading from "@/app/(dashboardLayout)/_components/_sections/heading";
 
 export default function MainLayout({
   children,
@@ -11,12 +9,12 @@ export default function MainLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col justify-between h-screen overflow-hidden">
-      <div className="flex-grow flex items-stretch justify-between divide-x h-full">
+    <div className="flex h-screen flex-col justify-between overflow-hidden">
+      <div className="flex h-full flex-grow items-stretch justify-between divide-x">
         <Sidebar />
-        <div className="w-full divide-y flex flex-col mb-1 px-1">
+        <div className="mb-1 flex w-full flex-col divide-y px-1">
           <Heading />
-          <div className="flex flex-col items-center justify-between p-4 overflow-y-auto">
+          <div className="flex flex-col items-center justify-between overflow-y-auto p-4">
             {children}
           </div>
         </div>

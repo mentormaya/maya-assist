@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import DateTime from "@/components/date-time"
+import DateTime from "@/app/(dashboardLayout)/_components/date-time";
 
 const Heading = () => {
   return (
-    <section className="p-2 flex justify-between items-center">
+    <section className="flex items-center justify-between p-2">
       <DateTime />
       <div className="flex gap-4">
         <div>Search 🔍</div>
         <div>Notifications and tools</div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Heading
+export default Heading;

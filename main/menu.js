@@ -1,10 +1,9 @@
-const { app } = require("electron");
+const { app, Menu } = require("electron");
 
-const about_app = require("./about_app")
-const about_author = require("./about_author")
+const about_app = require("./about_app");
+const about_author = require("./about_author");
 
-const APP_NAME = process.env.npm_package_productName || "MaYa Assist";
-const APP_VERSION = process.env.npm_package_version;
+const packageJson = require("../package.json")
 
 const isMac = process.platform === "darwin";
 
@@ -13,7 +12,7 @@ const template = [
   ...(isMac
     ? [
       {
-        label: APP_NAME,
+        label: packageJson.productName,
         submenu: [
           { role: "about" },
           { type: "separator" },
@@ -63,7 +62,9 @@ const template = [
     submenu: [
       { role: "reload" },
       { role: "forceReload" },
-      ...(app.isPackaged ? [{ role: "toggleDevTools" }] : [{ role: "toggleDevTools" }]),
+      ...(!app.isPackaged
+        ? [{ role: "toggleDevTools" }]
+        : []),
       { type: "separator" },
       { role: "resetZoom" },
       { role: "zoomIn" },
@@ -92,7 +93,7 @@ const template = [
     role: "help",
     submenu: [
       {
-        label: `About ${APP_NAME} v${APP_VERSION}`,
+        label: `About ${packageJson.productName} v${packageJson.version}`,
         click: about_app,
       },
       {
@@ -122,4 +123,4 @@ const template = [
   },
 ];
 
-module.exports = template;
+module.exports = Menu.buildFromTemplate(template);
