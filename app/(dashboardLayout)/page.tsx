@@ -1,9 +1,9 @@
-import { packageJson } from "@/lib/package";
+import DashboardMessage from "@/app/(dashboardLayout)/_components/_sections/dashboard-message";
 
 export default async function Home() {
   return (
-    <main className="flex flex-col gap-4">
-      <h1>Here is the main content area</h1>
+    <main className="flex flex-col shadow-md">
+      <DashboardMessage />
     </main>
   );
 }

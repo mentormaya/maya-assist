@@ -14,7 +14,7 @@ export default function MainLayout({
         <Sidebar />
         <div className="mb-1 flex w-full flex-col divide-y px-1">
           <Heading />
-          <div className="flex flex-col items-center justify-between overflow-y-auto p-4">
+          <div className="flex flex-col content-center justify-between overflow-y-auto p-2">
             {children}
           </div>
         </div>
