@@ -1,4 +1,9 @@
-const sapi = "https://sapi.deta.dev";
+import axios from "axios";
+
+export const sapi = "https://sapi.deta.dev";
+
+export const password_endpoint = "/generate/password"
+export const pin_endpoint = "/generate/pin"
 
 export const getDate = (url: string) => {
   // return (await ).json()
@@ -21,3 +26,13 @@ export const convertEnglishDate = async (date: string) => {
   );
   return nepDate;
 };
+
+export const generatePassword = async () => {
+  const res = await axios.get(`${sapi}${password_endpoint}`)
+  return res.data
+}
+
+export const generatePIN = async () => {
+  const res = await axios.get(`${sapi}${pin_endpoint}`)
+  return res.data
+}

@@ -23,6 +23,7 @@ const CopyToClipboard = ({
     <Button
       variant={variant}
       size={size}
+      type="button"
       className={cn(
         "h-6 w-6 p-2",
         className
