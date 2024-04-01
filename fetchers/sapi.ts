@@ -4,6 +4,8 @@ export const sapi = "https://sapi.deta.dev";
 
 export const password_endpoint = "/generate/password"
 export const pin_endpoint = "/generate/pin"
+export const number_endpoint = "/utils/numbers/nep_num"
+
 
 export const getDate = (url: string) => {
   // return (await ).json()
@@ -34,5 +36,10 @@ export const generatePassword = async () => {
 
 export const generatePIN = async () => {
   const res = await axios.get(`${sapi}${pin_endpoint}`)
+  return res.data
+}
+
+export const convetNumber = async (num: string) => {
+  const res = await axios.get(`${sapi}${number_endpoint}/${num}`)
   return res.data
 }

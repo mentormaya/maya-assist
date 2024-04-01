@@ -2,11 +2,16 @@
   {
     "label": "Home",
     "link": "/",
-    "icon": "home"
+    "icon": "LayoutDashboard"
+  },
+  {
+    "label": "Utilities",
+    "link": "/utilities",
+    "icon": "PocketKnife"
   },
   {
     "label": "SAPI",
     "link": "/sapi",
-    "icon": "gears"
+    "icon": "Webhook"
   }
 ]

@@ -1,21 +1,15 @@
 "use client"
 
-import { Copy, CopyIcon } from "lucide-react"
-import { Button } from "../ui/button"
-import { Input } from "../ui/input"
-import { Label } from "../ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
-import { CardWithForm } from "./api-card"
+import { CopyIcon } from "lucide-react"
+import { Input } from "../../../../../components/ui/input"
+import { Label } from "../../../../../components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../../../components/ui/select"
+import { CardWithForm } from "../../../../../components/sections/api-card"
 import { generatePIN, generatePassword } from "@/fetchers/sapi"
 import { useState } from "react"
-import CopyToClipboard from "../copy-clipboard"
+import CopyToClipboard from "../../../../../components/copy-clipboard"
 
-interface Props {
-  title: string
-  description?: string
-}
-
-const PasswordPINGeneratorCard = ({ title, description }: Props) => {
+const PasswordPINGeneratorCard = () => {
   const [passwordPin, setPasswordPin] = useState(true);
   const [output, setOutput] = useState("");
   const [message, setMessage] = useState("Click on the referesh button to generate.");
@@ -34,8 +28,8 @@ const PasswordPINGeneratorCard = ({ title, description }: Props) => {
   }
   return (
     <CardWithForm
-      title={title}
-      description={description}
+      title="Password/PIN Generator"
+      description="Generate a random password or PIN."
       message={message}
       refresh={refresh}
     >
@@ -53,15 +47,17 @@ const PasswordPINGeneratorCard = ({ title, description }: Props) => {
               </SelectContent>
             </Select>
           </div>
-          <div className="flex justify-between">
-            <div className="flex-1 flex-col space-y-1.5">
-              <Label htmlFor="output">{passwordPin ? "Password" : "PIN"}</Label>
-              <Input id="output" placeholder="Password/PIN will be generated here." value={output} readOnly />
+          {output !== "" && (
+            <div className="flex justify-between">
+              <div className="flex-1 flex-col space-y-1.5">
+                <Label htmlFor="output">{passwordPin ? "Password" : "PIN"}</Label>
+                <Input id="output" placeholder="Password/PIN will be generated here." value={output} readOnly />
+              </div>
+              <CopyToClipboard content={output} className="flex justify-end place-self-center mt-8 h-full p-1">
+                <CopyIcon />
+              </CopyToClipboard>
             </div>
-            <CopyToClipboard content={output} className="flex justify-end place-self-center mt-8 h-full p-1">
-              <CopyIcon />
-            </CopyToClipboard>
-          </div>
+          )}
         </div>
       </form>
     </CardWithForm>
