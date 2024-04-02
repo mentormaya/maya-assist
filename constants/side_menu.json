@@ -13,5 +13,15 @@
     "label": "SAPI",
     "link": "/sapi",
     "icon": "Webhook"
+  },
+  {
+    "label": "Chat GPT",
+    "link": "/chat-gpt",
+    "icon": "BotMessageSquare"
+  },
+  {
+    "label": "Gemini",
+    "link": "/gemini",
+    "icon": "Bot"
   }
 ]

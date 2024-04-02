@@ -1,7 +1,7 @@
-const { app, BrowserWindow, session, Menu } = require("electron");
+const { app, BrowserWindow, session, Menu, ipcMain } = require("electron");
 const serve = require("electron-serve");
 const path = require("path");
-
+require('dotenv').config()
 const app_config = require("../constants/app.json");
 
 const menu = require("./menu");
@@ -41,7 +41,7 @@ const createWindow = () => {
 
 app.on("ready", () => {
   createWindow();
-
+  ipcMain.handle("chatgpt", async (e, prompt) => { return prompt })
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });

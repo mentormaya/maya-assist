@@ -2,10 +2,10 @@
 
 import { CopyIcon } from 'lucide-react'
 
-import { CardWithForm } from '../../../../../components/sections/api-card'
-import { Label } from '../../../../../components/ui/label'
-import { Input } from '../../../../../components/ui/input'
-import CopyToClipboard from '../../../../../components/copy-clipboard'
+import { CardWithForm } from '@/components/sections/api-card'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import CopyToClipboard from '@/components/copy-clipboard'
 import { useState } from 'react'
 import { convetNumber } from '@/fetchers/sapi'
 
