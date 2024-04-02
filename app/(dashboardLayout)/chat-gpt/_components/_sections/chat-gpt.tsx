@@ -18,6 +18,7 @@ const ChatGPTCard = () => {
       setMessage("Please type your prompt in the input box above first.")
       return
     }
+    setMessage("Thinking...Please wait.....")
     //@ts-expect-error
     const res = await window.MaYaAPI.chatgpt(prompt)
     setOutput(res)

@@ -27,6 +27,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "constants/app.js"
-  ],
+, "fetchers/chatgpt.js"  ],
   "exclude": ["node_modules"]
 }

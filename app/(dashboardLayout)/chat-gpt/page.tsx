@@ -1,5 +1,4 @@
 import BreadCrumb from "@/components/breadcrumb"
-import { CardWithForm } from "@/components/sections/api-card"
 import ChatGPTCard from "./_components/_sections/chat-gpt"
 
 const ChatGPT = () => {

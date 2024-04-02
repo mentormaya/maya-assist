@@ -4,6 +4,8 @@ const path = require("path");
 require('dotenv').config()
 const app_config = require("../constants/app.json");
 
+const ChatGPT = require("../fetchers/chatgpt")
+
 const menu = require("./menu");
 
 const appServe = app.isPackaged
@@ -41,7 +43,7 @@ const createWindow = () => {
 
 app.on("ready", () => {
   createWindow();
-  ipcMain.handle("chatgpt", async (e, prompt) => { return prompt })
+  ipcMain.handle("chatgpt", ChatGPT.query)
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
