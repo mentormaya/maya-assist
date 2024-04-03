@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+import Markdown from './markdown';
 
 interface TypewriterProps {
   text: string;
@@ -10,7 +11,7 @@ interface TypewriterProps {
   className?: string | undefined
 }
 
-const Typewriter: React.FC<TypewriterProps> = ({ text, delay = 60, infinite = false, id = "typewriter", className }) => {
+const MarkdownTypewriter: React.FC<TypewriterProps> = ({ text, delay = 40, infinite = false, id = "typewriter", className }) => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -43,11 +44,7 @@ const Typewriter: React.FC<TypewriterProps> = ({ text, delay = 60, infinite = fa
       setCurrentIndex(0);
     }
   }, [text, infinite]);
-
-  return <pre id={id} className={cn(
-    "font-mono text-justify mr-4 leading-6 break-words",
-    className
-  )}>{displayText}</pre>;
+  return <Markdown content={displayText} />
 };
 
-export default Typewriter;
+export default MarkdownTypewriter;

@@ -13,8 +13,8 @@ module.exports = {
       const response = await result.response;
       return (response.text());
     } catch (err) {
-      console.log(`Error [${err.error.code}]: ${err.error.message}`)
-      return `Error [${err.error.code}]: ${err.error.message}`
+      console.log(err)
+      return err
     }
   }
 }
