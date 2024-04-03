@@ -15,13 +15,8 @@
     "icon": "Webhook"
   },
   {
-    "label": "Chat GPT",
-    "link": "/chat-gpt",
+    "label": "AI Chat",
+    "link": "/ai-chat",
     "icon": "BotMessageSquare"
-  },
-  {
-    "label": "Gemini",
-    "link": "/gemini",
-    "icon": "Bot"
   }
 ]

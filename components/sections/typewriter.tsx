@@ -44,10 +44,10 @@ const Typewriter: React.FC<TypewriterProps> = ({ text, delay = 60, infinite = fa
     }
   }, [text, infinite]);
 
-  return <Label id={id} className={cn(
-    "font-mono font-semibold text-justify mr-4 leading-6",
+  return <pre id={id} className={cn(
+    "font-mono text-justify mr-4 leading-6",
     className
-  )}>{displayText}</Label>;
+  )}>{displayText}</pre>;
 };
 
 export default Typewriter;

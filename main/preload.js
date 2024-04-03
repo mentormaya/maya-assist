@@ -7,5 +7,6 @@ contextBridge.exposeInMainWorld("MaYaAPI", {
   // send: (channel, args) => {
   //   ipcRenderer.send(channel, args);
   // },
-  chatgpt: async (prompt) => await ipcRenderer.invoke('chatgpt', prompt)
+  chatgpt: async (prompt) => await ipcRenderer.invoke('chatgpt', prompt),
+  gemini: async (prompt) => await ipcRenderer.invoke('gemini', prompt)
 });

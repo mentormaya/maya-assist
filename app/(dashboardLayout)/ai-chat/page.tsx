@@ -1,5 +1,5 @@
 import BreadCrumb from "@/components/breadcrumb"
-import ChatGPTCard from "./_components/_sections/chat-gpt"
+import ChatCard from "./_components/_sections/ai-chat-card"
 
 const ChatGPT = () => {
   return (
@@ -8,7 +8,7 @@ const ChatGPT = () => {
         <h1>Dashbord :: ChatGPT</h1>
         <BreadCrumb />
       </div>
-      <ChatGPTCard />
+      <ChatCard />
     </main>
   )
 }

@@ -19,10 +19,11 @@ interface Props {
   message?: string
   refresh: MouseEventHandler<HTMLButtonElement> | undefined;
   className?: string | undefined
+  option?: React.ReactNode
 }
 
 
-export function CardWithForm({ title, description, children, message = "Click on the referesh button to generate.", refresh, className }: Props) {
+export function CardWithForm({ title, description, children, message = "Click on the referesh button to generate.", refresh, className, option }: Props) {
   return (
     <Card className={cn(
       "w-[350px]",
@@ -33,9 +34,12 @@ export function CardWithForm({ title, description, children, message = "Click on
           <CardTitle className="text-lg">{title}</CardTitle>
           <CardDescription>{description}</CardDescription>
         </div>
-        <Button size="icon" variant="ghost" onClick={refresh}>
-          <RefreshCw />
-        </Button>
+        <div className="flex">
+          {option}
+          <Button size="icon" variant="ghost" onClick={refresh}>
+            <RefreshCw />
+          </Button>
+        </div>
       </CardHeader>
       <CardContent>
         {children}

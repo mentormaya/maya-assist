@@ -5,6 +5,7 @@ require('dotenv').config()
 const app_config = require("../constants/app.json");
 
 const ChatGPT = require("../fetchers/chatgpt")
+const Gemini = require("../fetchers/gemini")
 
 const menu = require("./menu");
 
@@ -44,6 +45,7 @@ const createWindow = () => {
 app.on("ready", () => {
   createWindow();
   ipcMain.handle("chatgpt", ChatGPT.query)
+  ipcMain.handle("gemini", Gemini.query)
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });

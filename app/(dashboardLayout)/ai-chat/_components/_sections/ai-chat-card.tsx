@@ -1,14 +1,19 @@
 "use client"
 
-import CopyToClipboard from '@/components/copy-clipboard'
-import { CardWithForm } from '@/components/sections/api-card'
-import Typewriter from '@/components/sections/typewriter'
+import { useState } from 'react'
+import { CopyIcon } from 'lucide-react'
+
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { CopyIcon } from 'lucide-react'
-import { useState } from 'react'
+import CopyToClipboard from '@/components/copy-clipboard'
+import Typewriter from '@/components/sections/typewriter'
+import { CardWithForm } from '@/components/sections/api-card'
+import Switcher from './ai-switcher'
+import { keyOf } from '@/lib/enum'
+import { AI } from '@/constants/enums'
 
-const ChatGPTCard = () => {
+const ChatCard = () => {
+  const [ai, setAI] = useState<AI>(AI.Gemini)
   const [output, setOutput] = useState("")
   const [prompt, setPrompt] = useState("")
   const [message, setMessage] = useState("Type your queries and click on refresh button to get answers.")
@@ -20,7 +25,7 @@ const ChatGPTCard = () => {
     }
     setMessage("Thinking...Please wait.....")
     //@ts-expect-error
-    const res = await window.MaYaAPI.chatgpt(prompt)
+    const res = ai == AI.ChatGPT ? await window.MaYaAPI.chatgpt(prompt) : await window.MaYaAPI.gemini(prompt)
     setOutput(res)
     setMessage("Any other queries?")
   }
@@ -29,10 +34,11 @@ const ChatGPTCard = () => {
     <div className="flex gap-4 mt-6">
       <CardWithForm
         title="Your Queries with AI"
-        description="Type your queries in the input below to get answer from chatgpt."
+        description={`Type your queries in the input below to get answer from ${keyOf(ai, AI)}.`}
         refresh={refresh}
         className="w-full"
         message={message}
+        option={<Switcher label="AI" options={AI} selected={ai} onChange={_ai => setAI(_ai as AI)} />}
       >
         <form onSubmit={e => { e.preventDefault(); refresh(); }}>
           <div className="grid w-full items-center gap-4">
@@ -65,4 +71,4 @@ const ChatGPTCard = () => {
   )
 }
 
-export default ChatGPTCard
+export default ChatCard
